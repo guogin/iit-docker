@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # 后端服务：个人所得税计算 API
+  iit-ws:
+    build:
+      # 从当前目录构建，iit 和 iit-ws 已作为子模块存在
+      context: .
+      dockerfile: iit-ws/Dockerfile
+    container_name: iit-ws
+    ports:
+      - "8080:8080"
+    networks:
+      - iit-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 前端服务：React 应用
+  iit-app:
+    build:
+      context: ./iit-app
+      dockerfile: Dockerfile
+    container_name: iit-app
+    ports:
+      - "3000:80"
+    depends_on:
+      - iit-ws
+    networks:
+      - iit-network
+
+networks:
+  iit-network:
+    driver: bridge

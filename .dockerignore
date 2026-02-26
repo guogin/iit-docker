@@ -1,0 +1,26 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.iml
+
+# 前端
+iit-app/node_modules
+iit-app/build
+iit-app/.git
+iit-app/.DS_Store
+
+# Java
+iit/target
+iit-ws/target
+*.class
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

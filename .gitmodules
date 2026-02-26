@@ -1,0 +1,9 @@
+[submodule "iit"]
+	path = iit
+	url = https://github.com/guogin/iit.git
+[submodule "iit-ws"]
+	path = iit-ws
+	url = https://github.com/guogin/iit-ws.git
+[submodule "iit-app"]
+	path = iit-app
+	url = https://github.com/guogin/iit-app.git
